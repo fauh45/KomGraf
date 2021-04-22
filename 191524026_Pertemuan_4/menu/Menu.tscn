@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://alata-regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://menu/Menu.gd" type="Script" id=2]
+[ext_resource path="res://background.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 1 )
+
+[node name="Menu" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="background" type="Sprite" parent="."]
+position = Vector2( 513.33, 301.2 )
+scale = Vector2( 0.430766, 0.303852 )
+texture = ExtResource( 3 )
+
+[node name="MenuLabel" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+margin_left = 18.3555
+margin_top = 16.7999
+margin_right = 500.355
+margin_bottom = 99.7999
+custom_fonts/normal_font = SubResource( 1 )
+text = "Line Demo
+Muhammad Fauzan Lubis - 191524026"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="RandomLinesButton" type="Button" parent="."]
+margin_left = 55.0688
+margin_top = 491.26
+margin_right = 255.069
+margin_bottom = 550.26
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RandomLinesLabel" type="RichTextLabel" parent="RandomLinesButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 19.3877
+margin_top = 9.73477
+margin_right = -13.6123
+margin_bottom = -12.2652
+custom_fonts/normal_font = SubResource( 1 )
+text = "Random Lines"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="LineGenerationButton" type="Button" parent="."]
+margin_left = 425.481
+margin_top = 493.505
+margin_right = 625.481
+margin_bottom = 552.505
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineGenerationLabel" type="RichTextLabel" parent="LineGenerationButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 10.0
+margin_right = -3.00018
+margin_bottom = -12.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "Line Generation"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="ShapeButton" type="Button" parent="."]
+margin_left = 771.199
+margin_top = 495.75
+margin_right = 971.2
+margin_bottom = 554.75
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShapeLabel" type="RichTextLabel" parent="ShapeButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 62.6332
+margin_top = 9.0
+margin_right = -53.367
+margin_bottom = -13.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "Shape"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[connection signal="pressed" from="RandomLinesButton" to="." method="_on_RandomLinesButton_pressed"]
+[connection signal="pressed" from="LineGenerationButton" to="." method="_on_LineGenerationButton2_pressed"]
+[connection signal="pressed" from="ShapeButton" to="." method="_on_ShapeButton_pressed"]

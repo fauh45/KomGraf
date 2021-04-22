@@ -10,19 +10,8 @@ var line_to_draw: PoolStringArray = ['0.1 * pow(x, 2)', '0.1 * pow(x, 3)', 'sin(
 var current_line_index: int = 0
 var current_steps: int = 0
 
-func put_pixel(x: float, y: float, color: Color, pixel_size: float = 2):
-	var radius = pixel_size / 2
-	var points_to_draw = PoolVector2Array()
-	
-	points_to_draw.append(Vector2(x - radius, y + radius))
-	points_to_draw.append(Vector2(x + radius, y + radius))
-	points_to_draw.append(Vector2(x + radius, y - radius))
-	points_to_draw.append(Vector2(x - radius, y - radius))
-	
-	var color_for_pixel = [color, color, color, color]
-	
-	# parameter uvs f uv mapping (?)
-	draw_primitive(points_to_draw, color_for_pixel, points_to_draw)
+func put_pixel(x: float, y: float, color: Color):
+	draw_primitive([Vector2(x, y)], [color], [])
 
 func draw_line_dda(va: Vector2, vb: Vector2, _line_color: Color):
 	var steps: int
@@ -57,35 +46,17 @@ func draw_line_bresenham(va: Vector2, vb: Vector2, _line_color: Color):
 	var dx: int = abs(va.x - vb.x)
 	var dy: int = abs(va.y - vb.y)
 	
-	var p: int = 2 * dy - dx
-	var twoDy: int = 2 * dy
-	var twoDyDx: int = 2* (dy - dx)
+	var y: int = va.y
+	var eps: int = 0
 	
-	var x: int
-	var y: int
-	var xEnd: int
-	
-	if va.x > vb.x:
-		x = vb.x
-		y = vb.y
-		xEnd = va.x
-	else:
-		x = va.x
-		y = va.y
-		xEnd = vb.x
-	put_pixel(x, y, _line_color)
-	
-	while x < xEnd:
-		x += 1
-		
-		if p < 0:
-			p += twoDy
-		else:
-			y += 1
-			p += twoDyDx
-		
+	for x in range(va.x, vb.x):
 		put_pixel(x, y, _line_color)
-
+		eps += dy
+		
+		if (eps << 1) >= dx:
+			y += 1
+			eps -= dx
+	
 func draw_frame(_margin: int):
 	var viewport_size = get_viewport_rect().size
 	
@@ -95,12 +66,12 @@ func draw_frame(_margin: int):
 	var bottom_right = Vector2(viewport_size.x - _margin, viewport_size.y - _margin)
 	
 	# Vertical Lines
-	draw_line_dda(top_left, bottom_left, line_color)
-	draw_line_dda(top_right, bottom_right, line_color)
+	draw_line_bresenham(top_left, bottom_left, line_color)
+	draw_line_bresenham(top_right, bottom_right, line_color)
 	
 	# Horizontal Lines
 	draw_line_bresenham(top_left, top_right, line_color)
-	draw_line_bresenham(bottom_left, bottom_right, line_color)
+	draw_line_dda(bottom_left, bottom_right, line_color)
 	
 	# Cartesian Line
 	var center_x = viewport_size.x / 2
