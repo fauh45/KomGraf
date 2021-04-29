@@ -231,12 +231,19 @@ func boundary_fill(starting_position: Vector2, boundary_color: Color, fill_color
 	var x = starting_position.x
 	var y = starting_position.y
 	
+	img.flip_y()
 	img.lock()
 	var curr_pixel_color = img.get_pixel(x, y)
 	print("x: ", x, ", y: ", y, ", color: ", curr_pixel_color, ", boundary: ", boundary_color)
 	
-	# var rounded_up_pixel_color = Color(round(curr_pixel_color.r), round(curr_pixel_color.g), round(curr_pixel_color.b))
 	if !curr_pixel_color.is_equal_approx(boundary_color):
 		put_pixel(x, y, fill_color)
 		print("x: ", x, ", y: ", y, ", color: ", curr_pixel_color, ", boundary: ", boundary_color)
+		
+		boundary_fill(Vector2(x + 1, y), boundary_color, fill_color)
+		boundary_fill(Vector2(x - 1, y), boundary_color, fill_color)
+		
+		boundary_fill(Vector2(x, y + 1), boundary_color, fill_color)
+		boundary_fill(Vector2(x, y - 1), boundary_color, fill_color)
+		
 	

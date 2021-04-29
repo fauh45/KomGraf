@@ -16,7 +16,7 @@ func _draw():
 	var top_left_square = Vector2(center_point.x - length, center_point.y - diff)
 	draw_square(length, top_left_square, Color.white)
 	
-	boundary_fill(top_left_square, Color.white, Color(198, 66, 32))
+	# boundary_fill(top_left_square, Color.white, Color(198, 66, 32))
 
 	draw_line_custom(center_point, Vector2(center_point.x, center_point.y - radius), Color.white)
 	draw_line_custom(center_point, Vector2(center_point.x + radius, center_point.y), Color.white)
