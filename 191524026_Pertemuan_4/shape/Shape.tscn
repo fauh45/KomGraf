@@ -3,7 +3,7 @@
 [ext_resource path="res://alata-regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://shape/Shape.gd" type="Script" id=2]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 25
 font_data = ExtResource( 1 )
 
@@ -32,7 +32,7 @@ margin_left = -35.4
 margin_top = -19.5
 margin_right = 39.6
 margin_bottom = 17.5
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 1 )
 text = "Home"
 __meta__ = {
 "_edit_use_anchors_": false,
