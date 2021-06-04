@@ -6,14 +6,63 @@ const SIN45 = sin(deg2rad(45))
 const BODYTOTAILRATIO: float = 0.125
 const BODYTOEYERATIO: float = 0.03125
 const COLONIESMARGIN: float = 280.0
+const MAX_FLY_FRAMES: int = 90
 
 var MARGINUNIT: float = 10.0
 
 
-func draw_fish_colonies(center_point: Vector2, rotation: float = 0):
-	draw_fish(Vector2(center_point.x, center_point.y + 70), Color.brown, 100, rotation)
-	draw_fish(Vector2(center_point.x, center_point.y - 70), Color.teal, 100, rotation)
-	draw_fish(center_point, Color.black, 100, rotation)
+func draw_fish_colonies(
+	center_point: Vector2,
+	rotation: float = 0,
+	zoom_level: float = 1.0,
+	colonies_rotation: float = 1.0
+):
+	draw_fish(
+		Utils.rotate(
+			Vector2(center_point.x, center_point.y + (70 * zoom_level)),
+			center_point,
+			colonies_rotation
+		),
+		Color.brown,
+		100 * zoom_level,
+		rotation + colonies_rotation
+	)
+	draw_fish(
+		Utils.rotate(
+			Vector2(center_point.x, center_point.y - (70 * zoom_level)),
+			center_point,
+			colonies_rotation
+		),
+		Color.teal,
+		100 * zoom_level,
+		rotation + colonies_rotation
+	)
+	draw_fish(center_point, Color.black, 100 * zoom_level, rotation + colonies_rotation)
+
+
+func draw_fish_colonies_fly(center_point: Vector2, frames: int, zoom_level: float = 1.0):
+	if frames > MAX_FLY_FRAMES:
+		return
+
+	draw_fish_colonies(
+		Utils.translate(center_point, Vector2(0, -get_fly_y_translation(frames))),
+		0,
+		get_fly_zoom(zoom_level, frames),
+		get_fly_rotation(frames)
+	)
+
+
+func get_fly_rotation(frame: int) -> float:
+	return rad2deg(-tan(deg2rad(float(frame) / 10)) + 3.5) - 90
+
+
+func get_fly_y_translation(frame: int) -> float:
+	return tan(deg2rad(frame)) + 3.5
+
+
+func get_fly_zoom(zoom_level: float, frames: int) -> float:
+	var normalized_frames = clamp(float(frames) / 20, 1, float(MAX_FLY_FRAMES) / 20)
+	return zoom_level / normalized_frames
 
 
 func draw_fish(center_point: Vector2, color: Color, length: float, rotation: float = 0):

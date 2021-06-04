@@ -11,3 +11,9 @@ static func rotate(point: Vector2, anchor: Vector2, degree: float) -> Vector2:
 		anchor.x + ((point.x - anchor.x) * rot_cos) - ((point.y - anchor.y) * rot_sin),
 		anchor.y + ((point.x - anchor.x) * rot_sin) + ((point.y - anchor.y) * rot_cos)
 	)
+
+static func scale(point: Vector2, anchor: Vector2, factor: float) -> Vector2:
+	return Vector2(
+		factor * point.x + anchor.x * factor + anchor.x,
+		factor * point.y + anchor.y * factor + anchor.y
+	)
