@@ -1,0 +1,58 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Reference",
+"class": "CircleParams",
+"language": "GDScript",
+"path": "res://CircleParams.gd"
+}, {
+"base": "Reference",
+"class": "CirclePoints",
+"language": "GDScript",
+"path": "res://CirclePoints.gd"
+}, {
+"base": "Shapes",
+"class": "Fish",
+"language": "GDScript",
+"path": "res://Fish.gd"
+}, {
+"base": "Node2D",
+"class": "Shapes",
+"language": "GDScript",
+"path": "res://Shapes.gd"
+}, {
+"base": "Reference",
+"class": "Utils",
+"language": "GDScript",
+"path": "res://Utils.gd"
+} ]
+_global_script_class_icons={
+"CircleParams": "",
+"CirclePoints": "",
+"Fish": "",
+"Shapes": "",
+"Utils": ""
+}
+
+[application]
+
+config/name="191524026_ETS"
+run/main_scene="res://Main.tscn"
+config/icon="res://icon.png"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_clear_color=Color( 0.354706, 0.458412, 0.769531, 1 )
+environment/default_environment="res://default_env.tres"
