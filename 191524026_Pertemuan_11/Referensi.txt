@@ -1,0 +1,4 @@
+- https://blender.stackexchange.com/questions/63246/how-do-i-make-a-3-dimensional-character-out-of-flat-picture
+- https://www.youtube.com/watch?v=TMPjKVgTfYs
+- https://www.youtube.com/watch?v=Y7M-B6xnaEM
+- https://blender.stackexchange.com/questions/24136/can-i-transfer-an-already-made-uv-to-another-object
