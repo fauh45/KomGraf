@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Pink_ish.tres" type="Material" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.gd" type="Script" id=3]
+
+[node name="World" type="Spatial"]
+
+[node name="Floor" type="CSGBox" parent="."]
+transform = Transform( 200, 0, 0, 0, 0.5, 0, 0, 0, 200, 0, -0.3, 0 )
+use_collision = true
+
+[node name="Obs" type="CSGBox" parent="Floor"]
+transform = Transform( 0.025, 0, 0, 0, 40, 0, 0, 0, 0.025, 0.470616, 40.6, 0.325162 )
+use_collision = true
+material = ExtResource( 1 )
+
+[node name="Obs2" type="CSGBox" parent="Floor"]
+transform = Transform( 0.025, 0, 0, 0, 40, 0, 0, 0, 0.025, 0.804964, 40.6, 0.326027 )
+use_collision = true
+material = ExtResource( 1 )
+
+[node name="Obs3" type="CSGBox" parent="Floor"]
+transform = Transform( 0.025, 0, 0, 0, 40, 0, 0, 0, 0.025, 0.467147, 40.6, 0.697508 )
+use_collision = true
+material = ExtResource( 1 )
+
+[node name="Obs4" type="CSGBox" parent="Floor"]
+transform = Transform( 0.025, 0, 0, 0, 40, 0, 0, 0, 0.025, 0.796861, 40.6, 0.697508 )
+use_collision = true
+material = ExtResource( 1 )
+
+[node name="Obs5" type="CSGBox" parent="Floor"]
+transform = Transform( 0.0210132, 0, 0.0135442, 0, 40, 0, -0.0135442, 0, 0.0210132, 0.417753, 40.6, -0.0698161 )
+use_collision = true
+material = ExtResource( 1 )
+
+[node name="Obs6" type="CSGBox" parent="Floor"]
+transform = Transform( 0.0210132, 0, 0.0135442, 0, 40, 0, -0.0135442, 0, 0.0210132, 0.698943, 40.6, -0.25197 )
+use_collision = true
+material = ExtResource( 1 )
+
+[node name="Obs7" type="CSGBox" parent="Floor"]
+transform = Transform( 0.0216506, 0, 0.0125, 0, 40, 0, -0.0125, 0, 0.0216506, 0.786151, 40.6, 0.0335394 )
+use_collision = true
+material = ExtResource( 1 )
+
+[node name="Obs8" type="CSGBox" parent="Floor"]
+transform = Transform( 0.0210132, 0, 0.0135442, 0, 40, 0, -0.0135442, 0, 0.0210132, 0.523142, 40.6, -0.561242 )
+use_collision = true
+material = ExtResource( 1 )
+
+[node name="Obs9" type="CSGBox" parent="Floor"]
+transform = Transform( 0.0210132, 0, 0.0135442, 0, 40, 0, -0.0135442, 0, 0.0210132, 0.216096, 40.6, -0.75895 )
+use_collision = true
+material = ExtResource( 1 )
+
+[node name="Obs10" type="CSGBox" parent="Floor"]
+transform = Transform( 0.0210132, 0, 0.0135442, 0, 40, 0, -0.0135442, 0, 0.0210132, -0.212719, 40.6, -0.690262 )
+use_collision = true
+material = ExtResource( 1 )
+
+[node name="Obs11" type="CSGBox" parent="Floor"]
+transform = Transform( 0.0210132, 0, 0.0135442, 0, 40, 0, -0.0135442, 0, 0.0210132, -0.580699, 40.6, -0.429752 )
+use_collision = true
+material = ExtResource( 1 )
+
+[node name="Obs12" type="CSGBox" parent="Floor"]
+transform = Transform( 0.0210132, 0, 0.0135442, 0, 40, 0, -0.0135442, 0, 0.0210132, -0.777255, 40.6, -0.0307648 )
+use_collision = true
+material = ExtResource( 1 )
+
+[node name="Wall" type="CSGBox" parent="Floor"]
+transform = Transform( 0.01, 0, 0, 0, 15, 0, 0, 0, 1, 1, 15, 0 )
+
+[node name="Wall2" type="CSGBox" parent="Floor"]
+transform = Transform( 0.01, 0, 0, 0, 15, 0, 0, 0, 1, -1, 15, 0 )
+
+[node name="Wall3" type="CSGBox" parent="Floor"]
+transform = Transform( -4.37114e-10, 0, 1, 0, 15, 0, -0.01, 0, -4.37114e-08, 0, 15, 1 )
+
+[node name="Wall4" type="CSGBox" parent="Floor"]
+transform = Transform( -4.37114e-10, 0, 1, 0, 15, 0, -0.01, 0, -4.37114e-08, 0, 15, -1 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 128.092, 0.969788, 147.774 )
+script = ExtResource( 3 )

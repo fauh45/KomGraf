@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=2]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="CubeMesh" id=1]
+material = SubResource( 4 )
+
+[sub_resource type="ConvexPolygonShape" id=2]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.721569, 0.45098, 0.2, 1 )
+
+[sub_resource type="CylinderMesh" id=3]
+material = SubResource( 5 )
+top_radius = 0.5
+bottom_radius = 0.5
+height = 1.0
+
+[node name="Player" type="VehicleBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.491677, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 2, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.000581026, 0.695928, -0.00620377 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 2.919, 0, 0, 0, 0.5, 0, 0, 0, 1.404, 0, 0.695928, 0 )
+shape = SubResource( 2 )
+
+[node name="FrontWheel" type="VehicleWheel" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.25771, 0, 0 )
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 1.0
+
+[node name="MeshInstance" type="MeshInstance" parent="FrontWheel"]
+transform = Transform( -4.37114e-08, 0.5, 0, -1, -2.18557e-08, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="BackLeftWheel" type="VehicleWheel" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.99539, 0, -1.01214 )
+use_as_traction = true
+wheel_radius = 1.0
+
+[node name="MeshInstance" type="MeshInstance" parent="BackLeftWheel"]
+transform = Transform( -4.37114e-08, 0.5, 0, -1, -2.18557e-08, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="BackRightWheel" type="VehicleWheel" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.99262, 0, 0.983257 )
+use_as_traction = true
+wheel_radius = 1.0
+
+[node name="MeshInstance" type="MeshInstance" parent="BackRightWheel"]
+transform = Transform( -4.37114e-08, 0.5, 0, -1, -2.18557e-08, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CameraOnBoard" type="Camera" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.938212, 1.57302, 0 )
+
+[node name="CameraOutBoard" type="Camera" parent="."]
+transform = Transform( -4.22148e-08, 0.259426, -0.965763, 1.13399e-08, 0.965763, 0.259426, 1, 2.66454e-15, -4.37114e-08, -5.32991, 3.46242, 0 )
